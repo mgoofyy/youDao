@@ -1,0 +1,18 @@
+{
+  "name": "goofyy",
+  "version": "0.0.1",
+  "description": "async download youDao ENGLISH sound",
+  "main": "main.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "master"
+  },
+  "keywords": [
+    "youDao"
+  ],
+  "author": "goofyy",
+  "license": "MIT"
+}
