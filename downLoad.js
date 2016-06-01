@@ -4,15 +4,15 @@
   const fs = require("fs");
   const path = require("path");
 
-  const urlList = [
-    "http://dict.youdao.com/dictvoice?audio=zhang&type=1.mp3",
-    "http://content.battlenet.com.cn/wow/media/wallpapers/patch/black-temple/black-temple-1920x1200.jpg",
-    "http://content.battlenet.com.cn/wow/media/wallpapers/patch/zandalari/zandalari-1920x1200.jpg",
-    "http://content.battlenet.com.cn/wow/media/wallpapers/patch/rage-of-the-firelands/rage-of-the-firelands-1920x1200.jpg",
-    "http://content.battlenet.com.cn/wow/media/wallpapers/patch/fury-of-hellfire/fury-of-hellfire-3840x2160.jpg",
-  ];
+var lineReader = require('line-reader');
 
-  function getHttpReqCallback(imgSrc, dirName, index) {
+var urlList = new Array();
+
+lineReader.eachLine('helloWord.txt', function(line, last) {
+  console.log(line);
+  urlList.push("http://dict.youdao.com/dictvoice?audio=" + line + "&type=1.mp3");
+  if(last) {
+    function getHttpReqCallback(imgSrc, dirName, index) {
     var fileName = index + "-" + path.basename(imgSrc);
     var callback = function(res) {
       console.log("request: " + imgSrc + " return status: " + res.statusCode);
@@ -55,4 +55,8 @@
   urlList.forEach(function(item, index, array) {
     startDownloadTask(item, './', index);
   })
+  }
+});
+
+  
 })();
